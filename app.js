@@ -136,23 +136,7 @@ app.delete("/api/expenses/:id", (req, res) => {
 });
 
 
-app.put("/api/expenses/:id", (req, res) => {
-  console.log("Request body:", req.body); 
-    const id = parseInt(req.params.id);
-  const expense = expenses.find((expense) => expense.id === id);
-  if (!expense) {
-    res.status(404).json({ message: "Not Found" });
-    return;
-  }
 
-  const { title, amount } = req.body;
-  console.log("Parsed body:", title, amount); 
-
-  if (title) expense.title = title;
-  if (amount) expense.amount = amount;
-
-  res.status(200).json({ message: "Expense updated successfully", expense });
-});
 
 app.put("/api/expenses/:id",async(req,res) => {
     const { id } = req.params
